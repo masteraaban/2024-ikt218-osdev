@@ -25,7 +25,7 @@ include(FetchContent)
 ########################################
 # UiAOS: Variables
 ########################################
-set(OS_ARCH_TARGET "i386")  # x86_64 
+set(OS_ARCH_TARGET "i386")  # x86_64
 set(OS_NAME "UiA Operating System")
 set(OS_KERNEL_NAME "uiaos")
 set(OS_KERNEL_BINARY "kernel.bin")
@@ -58,9 +58,13 @@ set(OS_KERNEL_LINKER "${CMAKE_CURRENT_SOURCE_DIR}/src/arch/${OS_ARCH_TARGET}/lin
 
 # Add executable target for the kernel
 add_executable(uiaos-kernel 
-	# src/multiboot2.asm # TODO: Add multiboot2 support
+    src/multiboot2.asm # TODO: Add multiboot2 support
     src/kernel.c
-	src/kernel.cpp
+    src/kernel.cpp
+    src/gdt.c
+    src/common.c
+    src/monitor.c
+    src/gdt.asm 
 )
 
 # Include directories for the kernel target
